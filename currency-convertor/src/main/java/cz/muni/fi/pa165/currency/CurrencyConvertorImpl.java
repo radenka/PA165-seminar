@@ -12,7 +12,6 @@ import java.util.Currency;
 public class CurrencyConvertorImpl implements CurrencyConvertor {
 
     private final ExchangeRateTable exchangeRateTable;
-    //private final Logger logger = LoggerFactory.getLogger(CurrencyConvertorImpl.class);
 
     public CurrencyConvertorImpl(ExchangeRateTable exchangeRateTable) {
         this.exchangeRateTable = exchangeRateTable;
@@ -20,6 +19,12 @@ public class CurrencyConvertorImpl implements CurrencyConvertor {
 
     @Override
     public BigDecimal convert(Currency sourceCurrency, Currency targetCurrency, BigDecimal sourceAmount) {
+        if (sourceCurrency == null || targetCurrency == null) {
+            throw new IllegalArgumentException("Currency can't be null!");
+        }
+        if (sourceAmount == null) {
+            throw new IllegalArgumentException("Amount of source currency can't be null!");
+        }
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 
