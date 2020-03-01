@@ -74,7 +74,7 @@ public class CurrencyConvertorImplTest {
     @Test
     public void testConvertWithExternalServiceFailure() throws ExternalServiceFailureException {
         when(exchangeRateTable.getExchangeRate(EUR, CZK))
-                .thenThrow(UnknownExchangeRateException.class);
+                .thenThrow(ExternalServiceFailureException.class);
         expectedException.expect(UnknownExchangeRateException.class);
         currencyConvertor.convert(EUR, CZK, BigDecimal.ONE);
     }
