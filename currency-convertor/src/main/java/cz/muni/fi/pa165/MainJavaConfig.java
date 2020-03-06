@@ -1,6 +1,5 @@
 package cz.muni.fi.pa165;
 
-import cz.muni.fi.pa165.config.MainConfiguration;
 import cz.muni.fi.pa165.currency.CurrencyConvertor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -14,8 +13,8 @@ public class MainJavaConfig {
     private static final Currency CZK = Currency.getInstance("CZK");
 
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfiguration.class);
-        CurrencyConvertor convertor = applicationContext.getBean(CurrencyConvertor.class);
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        CurrencyConvertor convertor = (CurrencyConvertor) applicationContext.getBean("currencyConvertor");
 
         BigDecimal result = convertor.convert(EUR, CZK, BigDecimal.ONE);
         System.out.println(result);

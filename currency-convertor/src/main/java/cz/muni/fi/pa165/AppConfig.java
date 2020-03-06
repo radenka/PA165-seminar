@@ -1,25 +1,19 @@
-package cz.muni.fi.pa165.config;
+package cz.muni.fi.pa165;
 
 import cz.muni.fi.pa165.currency.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.inject.Inject;
-
 @Configuration
-public class MainConfiguration {
+public class AppConfig {
 
-    @Bean
+    @Bean(name = "exchangeRateTable")
     public ExchangeRateTable exchangeRateTable() {
         return new ExchangeRateTableImpl();
     }
 
-    @Bean
-    /*public CurrencyConvertor currencyConvertor() {
+    @Bean(name = "currencyConvertor")
+    public CurrencyConvertor currencyConvertor() {
         return new CurrencyConvertorImpl(exchangeRateTable());
-    }*/
-
-    public CurrencyConvertor currencyConvertor(ExchangeRateTable exchangeRateTable) {
-        return new CurrencyConvertorImpl(exchangeRateTable);
     }
 }
