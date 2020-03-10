@@ -26,7 +26,8 @@ public class MainJavaSe {
 
 		emf = Persistence.createEntityManagerFactory("default");
 		try {
-			// BEGIN YOUR CODE
+			EntityManager em = emf.createEntityManager();
+
 			task04();
 			// END YOUR CODE
 		} finally {
@@ -39,8 +40,20 @@ public class MainJavaSe {
 		// TODO under this line, persist two categories (class Category), one with name
 		// Electronics and second with name Musical
 		// You must first obtain the Entity manager
+		EntityManager em_new = emf.createEntityManager();
+
+		Category electronics = new Category((long) 1);
+		Category musical = new Category((long) 2);
+		electronics.setName("Electronics");
+		musical.setName("Musical");
+
 		// Then you have to start transaction using getTransaction().begin()
+		em_new.getTransaction().begin();
+
 		// Then use persist() to persist both of the categories and finally commit the transaction
+		em_new.persist(electronics);
+		em_new.persist(musical);
+		em_new.getTransaction().commit();
 
 		// The code below is just testing code. Do not modify it
 		EntityManager em = emf.createEntityManager();
