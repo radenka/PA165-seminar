@@ -13,6 +13,8 @@ public class MainXml {
     private static final Currency CZK = Currency.getInstance("CZK");
 
     public static void main(String[] args) {
+        // beans were defined in applicationContext.xml (see commit history)
+        // MainJavaConfig uses beans defined in AppConfig, applicationContext.xml changed find beans in package cz
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         CurrencyConvertor convertor = applicationContext.getBean(CurrencyConvertor.class);
         // dle Honzy
