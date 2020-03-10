@@ -3,7 +3,9 @@ package cz.muni.fi.pa165;
 import cz.muni.fi.pa165.currency.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
+@EnableAspectJAutoProxy
 @Configuration
 public class AppConfig {
 
